@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Fotocheck</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Fondo suave */
+        }
+        .container {
+            max-width: 600px; /* Ancho máximo del formulario */
+            margin-top: 50px; /* Espaciado superior */
+            padding: 20px; /* Espaciado interior */
+            background-color: #ffffff; /* Fondo blanco */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+        }
+        h2 {
+            color: #007bff; /* Color del título */
+            margin-bottom: 30px; /* Espaciado inferior */
+        }
+        .form-control {
+            border-radius: 5px; /* Bordes redondeados para los campos */
+        }
+        .btn {
+            width: 100%; /* Botón ocupa todo el ancho */
+            border-radius: 5px; /* Bordes redondeados para el botón */
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h2>FORMULARIO</h2>
+        <form id="fotocheckForm" class="mt-4">
+            <div class="form-group">
+                <label for="fotocheck">Fotocheck:</label>
+                <input type="text" class="form-control" id="fotocheck" name="fotocheck" placeholder="INGRESAR CODIGO FOTOCHECK" pattern="[0-9]*" title="Solo se permiten números" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" readonly>
+            </div>
+            <div class="form-group">
+                <label for="area">Área:</label>
+                <input type="text" class="form-control" id="area" name="area" readonly>
+            </div>
+            <div class="form-group">
+                <label for="empresa">Empresa:</label>
+                <input type="text" class="form-control" id="empresa" name="empresa" readonly>
+            </div>
+            <div class="form-group">
+                <label for="evento">Evento:</label>
+                <input type="text" class="form-control" id="evento" name="evento">
+            </div>
+            <div class="form-group">
+                <label for="lugar">Lugar:</label>
+                <input type="text" class="form-control" id="lugar" name="lugar">
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (opcional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
