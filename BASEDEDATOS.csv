@@ -1,11 +1,7 @@
-"FOTOCHECK","NOMBRE","AREA","EMPRESA",
-"10003881","Quispe Sangay Franklin ","Operaciones Aguas","Yanacocha",
-"1101398","Salazar Aliaga Juan Ernesto","Salud y Seguridad ","Newmont Yanacocha",
-"1007301","Curo Caicedo Abraham","Gerencia General","Minera Yanacocha SRL",
-"1101359","RIOS PANDO ANAMARIA DOLORES","SERVICIOS TECNICOS","NEWMONT YANACOCHA",
-"1099933","BENITES ELORREAGA DANTE JAVIER","PROYECTOS DE CAPITAL SOSTENIBLE","NEWMONT YANACOCHA",
-"1101477","Urteaga becerra Augusto ","Planeamiento Aguas&Cierre","Newmont Peru",
-"01033420","Chávez Cabanillas Edwin Iván ","Cadena de Suministro ","NPL",
-"1204592","Cuadros Rojas Francisco Javier","Medio Ambiente y Permiso ","Newmont Yanacocha",
-"19030199","Moreno Cueva, Karol","Salud y Seguridad","Yanacocha",
-"1100530","Adrianzén Feijoo Mario Mardoqueo","Proyecto WTP","Newmont Peru SRL"
+FOTOCHECK,NOMBRE,AREA,EMPRESA
+12345678,Juan Perez,Recursos Humanos,Empresa A
+87654321,Ana Lopez,Contabilidad,Empresa B
+19056391,Carlos Gomez,Tecnología,Empresa C
+11223344,Lucia Torres,Marketing,Empresa D
+55667788,Pedro Ramirez,Ventas,Empresa E
+
