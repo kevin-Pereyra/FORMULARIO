@@ -73,6 +73,16 @@ const dados_do_formulario = document.forms['formulario']; // Asegúrate de que e
 dados_do_formulario.addEventListener('submit', function(e) {
     e.preventDefault();
 
+    // Mostrar barra de progreso antes de enviar los datos
+    Swal.fire({
+        title: 'Enviando datos...',
+        html: 'Por favor espera, esto puede tardar unos segundos.<br><b></b>',
+        allowOutsideClick: false,
+        didOpen: () => {
+            Swal.showLoading(); // Muestra el ícono de cargando
+        }
+    });
+
     fetch(script_do_google, {
         method: 'POST',
         body: new FormData(dados_do_formulario)
@@ -84,11 +94,17 @@ dados_do_formulario.addEventListener('submit', function(e) {
         return response.text(); // Cambia a .text() si no esperas JSON
     })
     .then(data => {
+        // Cerrar el modal de cargando
+        Swal.close();
+        // Mostrar el mensaje de éxito
         Swal.fire('Datos enviados con éxito: ' + data);
         dados_do_formulario.reset();
     })
     .catch(error => {
-        console.error('DATOS NO ENVIADOS', error);
+        // Cerrar el modal de cargando
+        Swal.close();
+        // Mostrar el mensaje de error
         Swal.fire('Ocurrió un error al enviar los datos: ' + error.message);
     });
 });
+
