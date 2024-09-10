@@ -6,60 +6,68 @@
     <title>Formulario Fotocheck</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Incluir la librería de SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         body {
-            background-color: #f8f9fa; /* Fondo suave */
+            background-color: #f8f9fa; 
         }
         .container {
-            max-width: 600px; /* Ancho máximo del formulario */
-            margin-top: 50px; /* Espaciado superior */
-            padding: 20px; /* Espaciado interior */
-            background-color: #ffffff; /* Fondo blanco */
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+            max-width: 600px;
+            margin-top: 50px; 
+            padding: 20px; 
+            background-color: #ffffff; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
         }
         h2 {
-            color: #007bff; /* Color del título */
-            margin-bottom: 30px; /* Espaciado inferior */
+            color: #173b63; 
+            margin-bottom: 30px; 
         }
         .form-control {
-            border-radius: 5px; /* Bordes redondeados para los campos */
+            border-radius: 5px; 
         }
         .btn {
-            width: 100%; /* Botón ocupa todo el ancho */
-            border-radius: 5px; /* Bordes redondeados para el botón */
+            width: 100%; 
+            border-radius: 5px; 
         }
     </style>
 </head>
 <body>
     <div class="container text-center">
-        <h2>FORMULARIO</h2>
-        <form id="fotocheckForm" class="mt-4">
+        <h2>FORMULARIO ASISTENCIA</h2>
+        <form id="fotocheckForm"  class="mt-4" name="formulario">
             <div class="form-group">
-                <label for="fotocheck">Fotocheck:</label>
+                <label for="fotocheck">Código Fotocheck</label>
                 <input type="text" class="form-control" id="fotocheck" name="fotocheck" placeholder="INGRESAR CODIGO FOTOCHECK" pattern="[0-9]*" title="Solo se permiten números" required>
             </div>
             <div class="form-group">
-                <label for="nombre">Nombre:</label>
+                <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" readonly>
             </div>
             <div class="form-group">
-                <label for="area">Área:</label>
+                <label for="area">Área</label>
                 <input type="text" class="form-control" id="area" name="area" readonly>
             </div>
             <div class="form-group">
-                <label for="empresa">Empresa:</label>
+                <label for="empresa">Empresa</label>
                 <input type="text" class="form-control" id="empresa" name="empresa" readonly>
             </div>
             <div class="form-group">
-                <label for="evento">Evento:</label>
-                <input type="text" class="form-control" id="evento" name="evento">
+                <label for="evento">Evento</label>
+                <select class="form-control" id="evento" name="evento" required>
+                    <option value="" disabled selected>Selecciona un evento</option>
+                    <option value="Evento 1">EVENTO 01</option>
+                    <option value="Evento 2">EVENTO 02</option>
+                    <option value="Evento 3">EVENTO 03</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="lugar">Lugar:</label>
+                <label for="lugar">Lugar</label>
                 <input type="text" class="form-control" id="lugar" name="lugar">
             </div>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="submit" class="btn btn-primary">GUARDAR</button>
         </form>
     </div>
 

@@ -13,7 +13,6 @@ async function getData() {
     console.error("Error al obtener los datos:", error);
   }
 }
-
 // Función para convertir CSV en un array de objetos
 function csvToArray(csv) {
   const lines = csv.split('\n');
@@ -38,13 +37,11 @@ function csvToArray(csv) {
   }
   return result;
 }
-
 // Función para buscar el fotocheck y rellenar los campos
 async function searchFotocheck(fotocheckInput) {
   const data = await getData();
   const fotocheckNumber = parseInt(fotocheckInput.trim(), 10); // Convertir input a número
   const result = data.find(item => item.FOTOCHECK === fotocheckNumber);
- 
   if (result) {
     // Si se encuentra el fotocheck, rellenar los campos
     document.getElementById("nombre").value = result.NOMBRE;
@@ -57,7 +54,6 @@ async function searchFotocheck(fotocheckInput) {
     document.getElementById("empresa").value = '';
   }
 }
-
 // Evento que se dispara cuando se ingresa un fotocheck
 document.getElementById("fotocheck").addEventListener("input", function() {
   const fotocheckInput = this.value;
@@ -70,110 +66,29 @@ document.getElementById("fotocheck").addEventListener("input", function() {
     document.getElementById("empresa").value = '';
   }
 });
+// Función para actualizar el archivo en Google Sheets
+const script_do_google = 'https://script.google.com/macros/s/AKfycbz3NjdMfgvr3g5BMbg1Q4BsONZh5Eg4z5Dq3ADLkhM7LHihQqcT3k4f5_9pI1VPjRrmQw/exec';
+const dados_do_formulario = document.forms['formulario']; // Asegúrate de que el nombre coincida
 
-///////
-document.getElementById("fotocheckForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+dados_do_formulario.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-  // Capturar los datos del formulario
-  const fotocheck = document.getElementById("fotocheck").value;
-  const nombre = document.getElementById("nombre").value;
-  const area = document.getElementById("area").value;
-  const empresa = document.getElementById("empresa").value;
-  const evento = document.getElementById("evento").value;
-  const lugar = document.getElementById("lugar").value;
-
-  const data = {
-    fotocheck,
-    nombre,
-    area,
-    empresa,
-    evento,
-    lugar
-  };
-
-  console.log("Datos capturados:", data);
-  
-  // Ahora guardaremos los datos en un CSV
-  updateCSVOnGitHub(data).catch(error => console.error(error));
-});
-
-// Función para actualizar el archivo CSV en GitHub
-async function updateCSVOnGitHub(data) {
-  const token = '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'; // Reemplaza con tu token
-  const repoOwner = 'kevin-Pereyra'; // Tu nombre de usuario en GitHub
-  const repoName = 'FORMULARIO'; // Nombre del repositorio
-  const filePath = 'REGISTROFINAL.csv'; // Ruta al archivo en el repositorio
-  const branch = 'main'; // Nombre de la rama (ajusta si es diferente)
-
-  const getFileUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}?ref=${branch}`;
-  
-  let attempts = 0;
-  const maxAttempts = 5;
-
-  while (attempts < maxAttempts) {
-    try {
-      console.log("Obteniendo el archivo desde GitHub...");
-      const response = await fetch(getFileUrl, {
-        headers: {
-          'Authorization': `token ${token}`,
-          'Accept': 'application/vnd.github.v3+json'
+    fetch(script_do_google, {
+        method: 'POST',
+        body: new FormData(dados_do_formulario)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
-      });
-
-      if (!response.ok) {
-        console.error('Error al obtener el archivo:', response.statusText);
-        throw new Error('Error obteniendo el archivo: ' + response.statusText);
-      }
-
-      const fileData = await response.json();
-      const fileSha = fileData.sha;
-      const existingContent = atob(fileData.content); // Decodifica el contenido base64
-
-      console.log("Archivo obtenido correctamente.");
-      console.log("Contenido existente:", existingContent);
-
-      // Preparar el nuevo registro
-      const newRecord = Object.values(data).join(",") + "\n";
-      const headers = 'fotocheck,nombre,area,empresa,eventos,lugar\n';
-      const updatedContent = existingContent ? existingContent + newRecord : headers + newRecord;
-
-      // Actualizar el archivo en GitHub
-      const updateFileUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`;
-      console.log("Actualizando el archivo en GitHub...");
-      const updateResponse = await fetch(updateFileUrl, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `token ${token}`,
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          message: 'Agregar nuevo registro CSV',
-          content: btoa(updatedContent), // Contenido actualizado en base64
-          sha: fileSha, // SHA del archivo
-          branch: branch // Rama
-        })
-      });
-
-      if (!updateResponse.ok) {
-        console.error('Error al actualizar el archivo:', updateResponse.statusText);
-        throw new Error('Error actualizando el archivo: ' + updateResponse.statusText);
-      }
-
-      console.log('Archivo actualizado exitosamente.');
-      return; // Salir de la función si la actualización es exitosa
-
-    } catch (error) {
-      console.error("Error en el intento", attempts + 1, ":", error);
-      attempts++;
-
-      if (attempts < maxAttempts) {
-        console.log(`Reintentando en 5 segundos... (${attempts}/${maxAttempts})`);
-        await new Promise(resolve => setTimeout(resolve, 10000)); // Esperar 5 segundos antes de reintentar
-      } else {
-        console.error('Se alcanzó el número máximo de reintentos.');
-      }
-    }
-  }
-}
+        return response.text(); // Cambia a .text() si no esperas JSON
+    })
+    .then(data => {
+        Swal.fire('Datos enviados con éxito: ' + data);
+        dados_do_formulario.reset();
+    })
+    .catch(error => {
+        console.error('DATOS NO ENVIADOS', error);
+        Swal.fire('Ocurrió un error al enviar los datos: ' + error.message);
+    });
+});
