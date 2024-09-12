@@ -1,5 +1,5 @@
 // URL del archivo CSV en GitHub
-const dataUrl = 'https://raw.githubusercontent.com/kevin-Pereyra/FORMULARIO/main/BASEDEDATOSS.csv';
+const dataUrl = 'https://raw.githubusercontent.com/kevin-Pereyra/FORMULARIO/main/BD.csv';
 
 // Función para obtener y procesar los datos del archivo CSV
 async function getData() {
