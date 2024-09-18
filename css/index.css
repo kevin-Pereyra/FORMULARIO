@@ -1,0 +1,79 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif; /* Fuente actualizada */
+}
+
+/* Estilos para el header */
+.header {
+    position: relative;
+    height: 100px;
+    background-image: url('/img/formulario-bg.png'); /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    max-width: 200px; /* Tamaño del logo */
+}
+
+.container {
+    max-width: 600px;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Comienza invisible */
+    transform: translateY(20px); /* Comienza desplazado hacia abajo */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transiciones suaves */
+}
+
+.container.show {
+    opacity: 1; /* Se vuelve visible */
+    transform: translateY(0); /* Se mueve a su posición original */
+}
+
+h2 {
+    color: #173b63;
+    margin-bottom: 30px;
+}
+
+/* Solo se aplica a los campos que se autocompletan */
+.form-control-autocomplete {
+    background-color: #f1f1f1; /* Fondo gris claro para campos autocompletados */
+    border-radius: 10px;
+}
+
+.form-select {
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.btn {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #173b63; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+}
+
+.btn:hover {
+    background-color: #14506d; /* Color más oscuro al pasar el mouse */
+}
+
+/* Animación de los campos del formulario */
+.form-group {
+    opacity: 0; /* Comienza invisible */
+    transform: translateY(10px); /* Comienza desplazado hacia abajo */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transiciones suaves */
+}
+
+.form-group.show {
+    opacity: 1; /* Se vuelve visible */
+    transform: translateY(0); /* Se mueve a su posición original */
+}

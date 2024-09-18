@@ -4,78 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Fotocheck</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
     <!-- Incluir la librería de SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <style>
-        body {
-            background-color: #f8f9fa; 
-        }
-        .container {
-            max-width: 600px;
-            margin-top: 50px; 
-            padding: 20px; 
-            background-color: #ffffff; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-        }
-        h2 {
-            color: #173b63; 
-            margin-bottom: 30px; 
-        }
-        .form-control {
-            border-radius: 5px; 
-        }
-        .btn {
-            width: 100%; 
-            border-radius: 5px; 
-        }
-    </style>
+   
 </head>
 <body>
+
+    <!-- Header con imagen de fondo y logo -->
+    <header class="header">
+        <img src="img/logo-white.png" alt="Logo" class="header-logo">
+    </header>
+
     <div class="container text-center">
         <h2>FORMULARIO ASISTENCIA</h2>
-        <form id="fotocheckForm"  class="mt-4" name="formulario">
-            <div class="form-group">
-                <label for="fotocheck">Código Fotocheck</label>
+        <form id="fotocheckForm" class="mt-4" name="formulario">
+            <div class="mb-3 form-group">
+                <label for="fotocheck" class="form-label">Código Fotocheck</label>
                 <input type="text" class="form-control" id="fotocheck" name="fotocheck" placeholder="INGRESAR CODIGO FOTOCHECK" pattern="[0-9]*" title="Solo se permiten números" required>
             </div>
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" readonly>
+            <div class="mb-3 form-group">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control form-control-autocomplete" id="nombre" name="nombre" readonly>
             </div>
-            <div class="form-group">
-                <label for="area">Área</label>
-                <input type="text" class="form-control" id="area" name="area" readonly>
+            <div class="mb-3 form-group">
+                <label for="area" class="form-label">Área</label>
+                <input type="text" class="form-control form-control-autocomplete" id="area" name="area" readonly>
             </div>
-            <div class="form-group">
-                <label for="empresa">Empresa</label>
-                <input type="text" class="form-control" id="empresa" name="empresa" readonly>
+            <div class="mb-3 form-group">
+                <label for="empresa" class="form-label">Empresa</label>
+                <input type="text" class="form-control form-control-autocomplete" id="empresa" name="empresa" readonly>
             </div>
-            <div class="form-group">
-                <label for="evento">Evento</label>
-                <select class="form-control" id="evento" name="evento" required>
+            <div class="mb-3 form-group">
+                <label for="evento" class="form-label">Evento</label>
+                <select class="form-select" id="evento" name="evento" required>
                     <option value="" disabled selected>Selecciona un evento</option>
                     <option value="Evento 1">EVENTO 01</option>
                     <option value="Evento 2">EVENTO 02</option>
                     <option value="Evento 3">EVENTO 03</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="lugar">Lugar</label>
+            
+            <div class="mb-3 form-group">
+                <label for="lugar" class="form-label">Lugar</label>
                 <input type="text" class="form-control" id="lugar" name="lugar">
             </div>
-            <button type="submit" class="btn btn-primary">GUARDAR</button>
+            <button type="submit" class="btn">GUARDAR</button>
         </form>
     </div>
 
-    <!-- Bootstrap JS (opcional) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script src="script.js"></script>
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>
